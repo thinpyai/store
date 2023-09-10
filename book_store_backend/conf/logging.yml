@@ -1,0 +1,40 @@
+"version": 1
+"disable_existing_loggers": false
+"formatters":
+  "jsonFormatter":
+    "format": "%(asctime)s.%(msecs)-3d [%(levelname)-5s] %(name)s %(message)s"
+    "datefmt": "%Y-%m-%d %H:%M:%S"
+    "class": "common.util.formatter.FormatterJSON"
+
+"handlers":
+  "consoleHandler":
+    "class": "logging.StreamHandler"
+    "level": "INFO"
+    "formatter": "jsonFormatter"
+    "stream": "ext://sys.stdout"
+  "fileHandler":
+    "class": "logging.handlers.TimedRotatingFileHandler"
+    "formatter": "jsonFormatter"
+    "filename": "../log/bookstore-backend.log"
+    "when": "D"
+    "interval": 1
+    "backupCount": 90
+"loggers":
+  "":
+    "level": "INFO"
+    "handlers":
+      - "consoleHandler"
+      - "fileHandler"
+    "propagate": false
+  "uvicorn":
+    "level": "INFO"
+    "handlers":
+      - "consoleHandler"
+      - "fileHandler"
+    "propagate": false
+  "uvicorn.access":
+    "level": "INFO"
+    "handlers":
+      - "consoleHandler"
+      - "fileHandler"
+    "propagate": false
