@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  bookstore-backend:
+    build:
+      context: ./book_store_backend
+      dockerfile: Dockerfile
+    container_name: bookstore-server
+    restart: always
+    ports:
+      - "8000:8080"
