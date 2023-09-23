@@ -15,14 +15,15 @@ API interface : GraphQL
 
 Provide the business APIs for book store
 
-# Preparation
+## Preparation
 
-Install 
-1. poetry
-2. python 3.9 or above
+1. Install python 3.9 or above
+2. Add Python path to environment variable
 
-# Installation
+## Installation
 
 ```
+pip install poetry
+poetry config virtualenvs.in-project true
 poetry install
 ```
