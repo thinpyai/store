@@ -1,17 +1,28 @@
+""" File for router definition. Query and Mutation schemas for GraphQLRouter are setup."""
 import strawberry
 from strawberry.fastapi import GraphQLRouter
 
 import context
-from web.schema import book_schema
+from web.schema import book_query_schema, book_mutation_schema
 
 
 @strawberry.type
-class Query(book_schema.Query):
+class Query(book_query_schema.Query):
+    """Query of book store
+
+    Args:
+        book_query_schema (Query): Book query schema
+    """
     ...
 
 
 @strawberry.type
-class Mutation(book_schema.Mutation):
+class Mutation(book_mutation_schema.Mutation):
+    """Mutation of book store
+
+    Args:
+        book_mutation_schema (Mutation): Book mutation schema
+    """
     ...
 
 
