@@ -3,7 +3,6 @@ name = "book-store"
 version = "0.1.0"
 description = "Book store server"
 authors = ["thinpyai <thinpyaiwin@gmail.com>"]
-readme = "README.md"
 packages = [
     { include = "*", from = "src" },
 ]
@@ -26,9 +25,14 @@ pytest-mock = "^3.10.0"
 pytest-asyncio = "^0.19.0"
 pytest-cov = "^4.0.0"
 coverage = "^6.5.0"
-pywin32 = "^304"
 freezegun = "^1.2.2"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies.pywin32]
+python = "^3.9"
+platform = "win32"  # Add this line to make it Windows-specific
+version = "*"
+allow-prereleases = false
