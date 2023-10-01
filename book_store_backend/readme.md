@@ -27,3 +27,19 @@ pip install poetry
 poetry config virtualenvs.in-project true
 poetry install
 ```
+
+## References
+
+Fast API
+https://fastapi.tiangolo.com/tutorial/
+
+Strawberry
+https://strawberry.rocks/docs/integrations/fastapi
+
+GraphQL
+https://graphql.org/
+
+SQLite
+https://www.sqlitetutorial.net/
+
+
