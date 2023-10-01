@@ -34,9 +34,9 @@ def custom_openapi():
     if api.openapi_schema:
         return api.openapi_schema
     openapi_schema = get_openapi(
-        title='IoT Analysis System',
+        title='Book system',
         version='0.1.0',
-        description='Schema for IoT Analysis System',
+        description='Schema for Book Store System',
         routes=api.routes,
     )
     api.openapi_schema = openapi_schema
