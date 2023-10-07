@@ -6,6 +6,7 @@ from sqlalchemy.orm import registry
 from sqlalchemy.sql import func
 
 from domain.model.book import Book
+from domain.model.conversation import Conversation
 from infra.table.type import GUID
 
 mapper_registry = registry()
@@ -26,3 +27,15 @@ book = Table(
     Column('updated_at', DateTime(timezone=True), onupdate=func.now(tz=timezone.utc)),
 )
 mapper_registry.map_imperatively(Book, book)
+
+# TODO to separate files per table groups.
+conversation = Table(
+    'conversations',
+    mapper_registry.metadata,
+    Column('id', GUID(), primary_key=True, default=uuid.uuid4),
+    Column('question', String(4000), nullable=False),
+    Column('answer', String(4000), nullable=True),
+    Column('created_at', DateTime(timezone=True), server_default=func.now(tz=timezone.utc)),
+    Column('updated_at', DateTime(timezone=True), onupdate=func.now(tz=timezone.utc)),
+)
+mapper_registry.map_imperatively(Conversation, conversation)

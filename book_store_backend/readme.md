@@ -8,10 +8,7 @@ Only staff can register/update/delete books.
 
 # Summary
 Service : Provide the business APIs for book store
-
-Framework : FastAPI
-Architecture : Clean architecture (light and simple version)
-API interface : GraphQL
+Highlight technologies : Python, FastAPI, ChatGPT, GraphQL, SQLite
 
 Provide the business APIs for book store
 

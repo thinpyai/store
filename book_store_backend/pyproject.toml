@@ -16,6 +16,7 @@ alembic = "1.7.7"
 strawberry-graphql = {extras = ["fastapi"], version = "0.109.1"}
 requests = "2.27.1"
 httpx = "^0.25.0"
+pydantic-settings = "^2.0.3"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^5.0.0"
