@@ -4,8 +4,19 @@ import strawberry
 from strawberry.types import Info
 
 from domain.model.book import Book
-from web.type.book_type import (BookDetailInput, BookType)
+from web.type.book_type import BookDetailInput, BookType
 
+
+def get_book_service(info: Info):
+    """Get book service.
+
+    Args:
+        info (Info): FastAPI info data context
+
+    Returns:
+        BookService: Book service object
+    """
+    return info.context.book_service
 
 @strawberry.type(name='BookMutation')
 class Mutation:
@@ -23,7 +34,7 @@ class Mutation:
             BookType: Resulted book information object
         """
         book = Book(**book_input.__dict__)
-        registered_book = info.context.book.register_book(book)
+        registered_book = get_book_service(info).register_book(book)
         return registered_book
 
     @strawberry.field
@@ -38,7 +49,7 @@ class Mutation:
             BookType: Resulted book information object
         """
         book = Book(**book_input.__dict__)
-        edited_book = info.context.book.edit_book(book)
+        edited_book = get_book_service(info).edit_book(book)
         return edited_book
 
     @strawberry.field
@@ -52,5 +63,5 @@ class Mutation:
         Returns:
             BookType: Resulted book information object
         """
-        deleted_book = info.context.book.delete_book(book_id)
+        deleted_book = get_book_service(info).delete_book(book_id)
         return deleted_book

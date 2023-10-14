@@ -2,7 +2,7 @@
 import strawberry
 from strawberry.fastapi import GraphQLRouter
 
-import context
+from context import get_store_context
 from web.schema import (book_mutation_schema, book_query_schema,
                         chat_mutation_schema)
 
@@ -29,4 +29,4 @@ class Mutation(book_mutation_schema.Mutation, chat_mutation_schema.Mutation):
 
 schema = strawberry.Schema(query=Query, mutation=Mutation)
 book_app = GraphQLRouter(schema,
-                         context_getter=context.get_book_context)
+                         context_getter=get_store_context)

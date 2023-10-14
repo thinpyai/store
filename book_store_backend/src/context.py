@@ -32,26 +32,29 @@ def get_conversation_service(conversation_repository: ConversationRepository = D
         conversation_repository=conversation_repository)
 
 
-class BookContext(BaseContext):
-    def __init__(self, book_service: BookService):
+class StoreContext(BaseContext):
+    def __init__(self, book_service: BookService, conversation_service: ConversationService):
         self.book_service: BookService = book_service
-
-
-class ConversationContext(BaseContext):
-    def __init__(self, conversation_service: ConversationService):
         self.conversation_service: ConversationService = conversation_service
 
 
-async def get_book_context(
-        book_service: BookService = Depends(get_book_service)
-) -> BookContext:
-    return BookContext(
-        book_service=book_service
-    )
+# class ConversationContext(BaseContext):
+#     def __init__(self, conversation_service: ConversationService):
+#         self.conversation_service: ConversationService = conversation_service
 
-async def get_conversation_context(
+
+async def get_store_context(
+        book_service: BookService = Depends(get_book_service),
         conversation_service: ConversationService = Depends(get_conversation_service)
-) -> ConversationContext:
-    return ConversationContext(
+) -> StoreContext:
+    return StoreContext(
+        book_service=book_service,
         conversation_service=conversation_service
     )
+
+# async def get_conversation_context(
+#         conversation_service: ConversationService = Depends(get_conversation_service)
+# ) -> ConversationContext:
+#     return ConversationContext(
+#         conversation_service=conversation_service
+#     )

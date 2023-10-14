@@ -12,3 +12,4 @@ class Conversation:
     """ Chat conversation """
     question: str = None
     answer: str = None
+

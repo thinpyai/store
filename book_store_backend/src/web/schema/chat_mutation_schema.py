@@ -12,6 +12,17 @@ from domain.model.conversation import Conversation
 from web.type.chat_type import ConversationType, QuestionInput
 
 
+def get_chat_service(info):
+    """Get chat service.
+
+    Args:
+        info (Info): FastAPI info data context
+
+    Returns:
+        ConversationService: Conversation service object
+    """
+    return info.context.conversation_service
+
 @strawberry.type(name='ChatMutation')
 class Mutation:
     """ Chat Mutation class """
@@ -27,6 +38,6 @@ class Mutation:
         Returns:
             BookType: Resulted book information object
         """
-        book = Conversation(**question_input.__dict__)
-        registered_book = info.context.book.register_book(book)
-        return registered_book
+        question = Conversation(**question_input.__dict__)
+        result = get_chat_service(info).ask_question(question)
+        return result
