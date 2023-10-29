@@ -1,5 +1,3 @@
-# store
-
 ## Purpose
 
 The purpose of this content is to support educational activities, including but not limited to:
