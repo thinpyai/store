@@ -3,7 +3,7 @@
 import strawberry
 from strawberry.types import Info
 
-from api.type.url_type import ShortenedUrlOutput, LongUrlInput
+from api.type.url_type import ShortenedUrlOutput
 
 
 def get_url_service(info: Info):
@@ -17,13 +17,13 @@ def get_url_service(info: Info):
     """
     return info.context.url_service
 
+
 @strawberry.type(name='UrlShortenMutation')
 class Mutation:
     """ URl shorten mutation class """
 
     @strawberry.field
-    def shorten_url(self, info: Info, 
-                    long_url_input: LongUrlInput) -> ShortenedUrlOutput:
+    def shorten_url(self, info: Info, long_url: str) -> ShortenedUrlOutput:
         """Generate a shortened url
 
         Args:
@@ -33,5 +33,5 @@ class Mutation:
             BookType: Resulted book information object
         """
         url_service = get_url_service(info=info)
-        shortened_url = url_service.shorten_url(long_url_input.url)
-        return ShortenedUrlOutput(url=shortened_url)
+        shortened_url = url_service.shorten_url(long_url)
+        return ShortenedUrlOutput(shortened_url == shortened_url, long_url=long_url)

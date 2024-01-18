@@ -2,8 +2,8 @@
 import strawberry
 from strawberry.fastapi import GraphQLRouter
 
-# from context import get_store_context
-from api.schema import url_shorten_mutation_schema, history_query_schema
+from api.schema import history_query_schema, url_shorten_mutation_schema
+from context import get_url_context
 
 
 @strawberry.type
@@ -25,4 +25,4 @@ class Mutation(url_shorten_mutation_schema.Mutation):
 
 
 schema = strawberry.Schema(query=Query, mutation=Mutation)
-url_shortener_app = GraphQLRouter(schema)
+url_shortener_app = GraphQLRouter(schema, context_getter=get_url_context)
