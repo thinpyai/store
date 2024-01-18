@@ -12,3 +12,6 @@ poetry init
 cd url-shortener\server\src
 uvicorn --factory app:main --host 0.0.0.0 --port 8000
 ```
+
+# Challenge info
+https://codingchallenges.fyi/challenges/challenge-url-shortener/
