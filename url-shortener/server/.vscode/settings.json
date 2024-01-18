@@ -14,26 +14,18 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
     },
-    "editor.defaultFormatter": "ms-python.autopep8"
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true
   },
-  "python.formatting.provider": "none",
-  "python.formatting.autopep8Args": [
-    "--ignore",
-    "E70",
+  "autopep8.args": [
     "--max-line-length",
-    "120"
+    "120",
+    "--ignore",
+    "E70"
   ],
-  "python.linting.enabled": true,
-  "python.linting.lintOnSave": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.pylintCategorySeverity.convention": "Warning",
-  "python.linting.pylintCategorySeverity.warning": "Warning",
-  "python.linting.pylintCategorySeverity.refactor": "Warning",
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": [
+  "flake8.args": [
     "--config=.flake8"
   ],
-  "python.linting.pycodestyleEnabled": false,
   "python.testing.pytestEnabled": true,
   "python.testing.pytestArgs": [
     "tests",
