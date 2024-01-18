@@ -4,6 +4,13 @@ import traceback
 
 
 class FormatterJSON(logging.Formatter):
+    """
+    Formatter to output message in json format.
+
+    Args:
+        logging (str): Log output string in json format.
+    """
+
     def format(self, record):
         if self.usesTime():
             record.asctime = self.formatTime(record, self.datefmt)
