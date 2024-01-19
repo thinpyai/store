@@ -6,7 +6,7 @@ class Url:
     """
     Url class model
     """
-    shortened_url: str
+    short_url: str
     long_url: str
     is_valid: bool
     id: str = None

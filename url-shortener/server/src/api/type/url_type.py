@@ -8,5 +8,5 @@ import strawberry
 @strawberry.type
 class ShortenedUrlOutput():
     """Book schema object type"""
-    shortened_url: str
+    short_url: str
     long_url: str

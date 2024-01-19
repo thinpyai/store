@@ -12,6 +12,8 @@ poetry init
 cd url-shortener\server\src
 uvicorn --factory app:main --host 0.0.0.0 --port 8000
 ```
+or
+From VSCode Run > Python: url-shortener
 
 
 ## call APIs (dev)
@@ -23,7 +25,7 @@ body : GraphQL
 mutation ShortenUrl {
 	shortenUrl( longUrl: "https://graphql.org/learn/queries/")
 	{
-		shortenedUrl,
+		shortUrl,
         longUrl
 	}
 }
@@ -32,7 +34,7 @@ Sample response
 {
     "data": {
         "shortenUrl": {
-            "shortenedUrl": "true",
+            "shortUrl": "true",
             "longUrl": "https://graphql.org/learn/queries/"
         }
     }

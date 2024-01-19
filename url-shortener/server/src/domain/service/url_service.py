@@ -28,9 +28,9 @@ class UrlService:
             str: Shortened url
         """
         shortened_code = self.generate_shortened_code(original_url)
-        shortened_url = f"{PROTOCOL}://{DOMAIN_VALUE}/{shortened_code}"
-        self.__url_repository.store_url_record(original_url, shortened_url)
-        return shortened_url
+        short_url = f"{PROTOCOL}://{DOMAIN_VALUE}/{shortened_code}"
+        self.__url_repository.store_url_record(original_url, short_url)
+        return short_url
 
     def generate_shortened_code(self, original_url: str) -> str:
         """
