@@ -1,8 +1,9 @@
 import os
 
-from infra.table.book_table import mapper_registry
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+from infra.table.url_table import mapper_registry
 
 
 class DatabaseContext:

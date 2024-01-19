@@ -1,5 +1,7 @@
 import hashlib
 
+from infra.repository.url_repository import UrlRepository
+
 DOMAIN_VALUE = "localhost"
 PROTOCOL = "http"
 
@@ -8,11 +10,12 @@ class UrlService:
     """
     Url service class
     """
-    def __init__(self) -> None:
+
+    def __init__(self, url_repository: UrlRepository) -> None:
         """
         Initialization
         """
-        pass
+        self.__url_repository = url_repository
 
     def shorten_url(self, original_url: str) -> str:
         """
@@ -26,6 +29,7 @@ class UrlService:
         """
         shortened_code = self.generate_shortened_code(original_url)
         shortened_url = f"{PROTOCOL}://{DOMAIN_VALUE}/{shortened_code}"
+        self.__url_repository.store_url_record(original_url, shortened_url)
         return shortened_url
 
     def generate_shortened_code(self, original_url: str) -> str:
@@ -43,4 +47,3 @@ class UrlService:
         hash_value = hash_algorithm.hexdigest()
         shortened_code = hash_value[:8]
         return shortened_code
-
