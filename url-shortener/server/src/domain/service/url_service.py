@@ -4,6 +4,7 @@ from infra.repository.url_repository import UrlRepository
 
 DOMAIN_VALUE = "localhost"
 PROTOCOL = "http"
+SERVICE_CODE = "shorten-url"
 
 
 class UrlService:
@@ -27,10 +28,18 @@ class UrlService:
         Returns:
             str: Shortened url
         """
-        shortened_code = self.generate_shortened_code(original_url)
-        short_url = f"{PROTOCOL}://{DOMAIN_VALUE}/{shortened_code}"
-        self.__url_repository.store_url_record(original_url, short_url)
+        short_code = self.generate_shortened_code(original_url)
+        short_url = f"{PROTOCOL}://{DOMAIN_VALUE}/{SERVICE_CODE}/{short_code}"
+        # TODO check same short_code in db before storing
+        self.__url_repository.create_url_record(original_url, short_url, short_code)
         return short_url
+
+    def retrieve_original_url(self, short_code) -> str:
+        url = self.__url_repository.get_url_record(short_code)
+        if not url:
+            # TODO raise error
+            pass
+        return url.long_url
 
     def generate_shortened_code(self, original_url: str) -> str:
         """
@@ -45,5 +54,5 @@ class UrlService:
         hash_algorithm = hashlib.sha256()
         hash_algorithm.update(original_url.encode())
         hash_value = hash_algorithm.hexdigest()
-        shortened_code = hash_value[:8]
-        return shortened_code
+        short_code = hash_value[:16]
+        return short_code

@@ -1,0 +1,18 @@
+from fastapi import Depends
+from fastapi.responses import RedirectResponse
+from fastapi.routing import APIRouter
+
+from context import get_url_service
+from domain.service.url_service import UrlService
+
+# TODO to use setting conf
+SERVICE_CODE = "shorten-url"
+
+router = APIRouter(prefix=f'/{SERVICE_CODE}',
+                   tags=['redirect-to-original'])
+
+
+@router.get("/{short_code}", response_class=RedirectResponse, status_code=302)
+async def redirect_original_url(short_code: str, url_service: UrlService = Depends(get_url_service)):
+    original_url = url_service.retrieve_original_url(short_code)
+    return original_url

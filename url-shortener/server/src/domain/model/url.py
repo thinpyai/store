@@ -8,5 +8,6 @@ class Url:
     """
     short_url: str
     long_url: str
+    short_code: str
     is_valid: bool
     id: str = None

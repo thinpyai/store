@@ -15,9 +15,10 @@ url = Table(
     mapper_registry.metadata,
     Column('id', GUID(), primary_key=True, default=uuid.uuid4),
     Column('short_url', String(128), nullable=False),
-    Column('long_url', String(128), nullable=True),
+    Column('long_url', String(128), nullable=False),
+    Column('short_code', String(128), nullable=False, primary_key=True),
     Column('is_valid', Boolean, default=False),
     Column('created_at', DateTime(timezone=True), server_default=func.now(tz=timezone.utc)),
-    Column('updated_at', DateTime(timezone=True), onupdate=func.now(tz=timezone.utc)),
+    Column('updated_at', DateTime(timezone=True), onupdate=func.now(tz=timezone.utc))
 )
 mapper_registry.map_imperatively(Url, url)

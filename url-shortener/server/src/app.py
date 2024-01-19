@@ -25,4 +25,11 @@ logger = logging.getLogger(__name__)
 def main():
 
     api.include_router(url_shortener_app, prefix='/service/url-shortener')
+
+    # api.include_router(
+    #     fastapi_users.get_reset_password_router(),
+    #     prefix='/auth',
+    #     tags=['auth'],
+    # )
+
     return api
