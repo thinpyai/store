@@ -37,6 +37,7 @@ class UrlService:
         short_url = f"{PROTOCOL}://{DOMAIN_VALUE}/{SERVICE_CODE}/{short_code}"
         # TODO check same short_code in db before storing
         self.__url_repository.create_url_record(original_url, short_url, short_code)
+        # TODO output log
         return short_url
 
     def retrieve_original_url(self, short_code) -> str:
@@ -52,7 +53,7 @@ class UrlService:
         if not url:
             # TODO raise error
             pass
-        return url.long_url
+        return url.original_url
 
     def __generate_shortened_code(self, original_url: str) -> str:
         """

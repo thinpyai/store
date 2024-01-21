@@ -23,7 +23,7 @@ class Mutation:
     """ URl shorten mutation class """
 
     @strawberry.field
-    def shorten_url(self, info: Info, long_url: str) -> ShortenedUrlOutput:
+    def shorten_url(self, info: Info, original_url: str) -> ShortenedUrlOutput:
         """Generate a shortened url
 
         Args:
@@ -33,5 +33,5 @@ class Mutation:
             BookType: Resulted book information object
         """
         url_service = get_url_service(info=info)
-        short_url = url_service.shorten_url(long_url)
-        return ShortenedUrlOutput(short_url=short_url, long_url=long_url)
+        short_url = url_service.shorten_url(original_url)
+        return ShortenedUrlOutput(short_url=short_url, original_url=original_url)

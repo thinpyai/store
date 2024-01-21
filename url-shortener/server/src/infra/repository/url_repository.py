@@ -20,19 +20,19 @@ class UrlRepository:
         self.db = db
 
     @transactional
-    def create_url_record(self, long_url: str, short_url: str, short_code: str) -> Url:
+    def create_url_record(self, original_url: str, short_url: str, short_code: str) -> Url:
         """
         Create url record.
 
         Args:
-            long_url (str): Original url
+            original_url (str): Original url
             short_url (str): Shortened url
             short_code (str): Short code
 
         Returns:
             Url: Stored url record
         """
-        url = Url(short_url=short_url, long_url=long_url, short_code=short_code, is_valid=True)
+        url = Url(short_url=short_url, original_url=original_url, short_code=short_code, is_valid=True)
         self.db.add(url)
         return url
 
