@@ -34,4 +34,4 @@ class Mutation:
         """
         url_service = get_url_service(info=info)
         short_url = url_service.shorten_url(long_url)
-        return ShortenedUrlOutput(short_url == short_url, long_url=long_url)
+        return ShortenedUrlOutput(short_url=short_url, long_url=long_url)

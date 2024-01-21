@@ -7,6 +7,7 @@ import logging
 from logging import CRITICAL, DEBUG, ERROR, INFO, WARN
 
 from api.api import api
+from api.schema.url_redirect_endpoint import router as redirect_router
 from router import url_shortener_app
 
 logger = logging.getLogger(__name__)
@@ -25,11 +26,5 @@ logger = logging.getLogger(__name__)
 def main():
 
     api.include_router(url_shortener_app, prefix='/service/url-shortener')
-
-    # api.include_router(
-    #     fastapi_users.get_reset_password_router(),
-    #     prefix='/auth',
-    #     tags=['auth'],
-    # )
-
+    api.include_router(redirect_router)
     return api

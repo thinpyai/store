@@ -1,3 +1,5 @@
+"""Endpoints modules."""
+
 from fastapi import Depends
 from fastapi.responses import RedirectResponse
 from fastapi.routing import APIRouter
@@ -14,5 +16,15 @@ router = APIRouter(prefix=f'/{SERVICE_CODE}',
 
 @router.get("/{short_code}", response_class=RedirectResponse, status_code=302)
 async def redirect_original_url(short_code: str, url_service: UrlService = Depends(get_url_service)):
+    """
+    Redirect to original url.
+
+    Args:
+        short_code (str): Shortened code
+        url_service (UrlService, optional): Url service. Defaults to Depends(get_url_service).
+
+    Returns:
+        RedirectResponse: Redirect response to original url
+    """
     original_url = url_service.retrieve_original_url(short_code)
     return original_url

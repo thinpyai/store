@@ -1,8 +1,13 @@
+"""Url service module.
+
+Returns:
+    UrlService: Url service
+"""
 import hashlib
 
 from infra.repository.url_repository import UrlRepository
 
-DOMAIN_VALUE = "localhost"
+DOMAIN_VALUE = "localhost:8080"
 PROTOCOL = "http"
 SERVICE_CODE = "shorten-url"
 
@@ -28,20 +33,28 @@ class UrlService:
         Returns:
             str: Shortened url
         """
-        short_code = self.generate_shortened_code(original_url)
+        short_code = self.__generate_shortened_code(original_url)
         short_url = f"{PROTOCOL}://{DOMAIN_VALUE}/{SERVICE_CODE}/{short_code}"
         # TODO check same short_code in db before storing
         self.__url_repository.create_url_record(original_url, short_url, short_code)
         return short_url
 
     def retrieve_original_url(self, short_code) -> str:
+        """_summary_
+
+        Args:
+            short_code (_type_): _description_
+
+        Returns:
+            str: _description_
+        """
         url = self.__url_repository.get_url_record(short_code)
         if not url:
             # TODO raise error
             pass
         return url.long_url
 
-    def generate_shortened_code(self, original_url: str) -> str:
+    def __generate_shortened_code(self, original_url: str) -> str:
         """
         Generate shortened code from original url.
 
