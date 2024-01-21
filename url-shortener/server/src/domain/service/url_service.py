@@ -6,10 +6,7 @@ Returns:
 import hashlib
 
 from infra.repository.url_repository import UrlRepository
-
-DOMAIN_VALUE = "localhost:8080"
-PROTOCOL = "http"
-SERVICE_CODE = "shorten-url"
+from setting import settings
 
 
 class UrlService:
@@ -34,7 +31,7 @@ class UrlService:
             str: Shortened url
         """
         short_code = self.__generate_shortened_code(original_url)
-        short_url = f"{PROTOCOL}://{DOMAIN_VALUE}/{SERVICE_CODE}/{short_code}"
+        short_url = f"{settings.protocol}://{settings.domain_value}/{settings.service_name}/{short_code}"
         # TODO check same short_code in db before storing
         self.__url_repository.create_url_record(original_url, short_url, short_code)
         # TODO output log

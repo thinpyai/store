@@ -6,11 +6,9 @@ from fastapi.routing import APIRouter
 
 from context import get_url_service
 from domain.service.url_service import UrlService
+from setting import settings
 
-# TODO to use setting conf
-SERVICE_CODE = "shorten-url"
-
-router = APIRouter(prefix=f'/{SERVICE_CODE}',
+router = APIRouter(prefix=f'/{settings.service_name}',
                    tags=['redirect-to-original'])
 
 
