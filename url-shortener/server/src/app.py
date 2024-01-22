@@ -23,8 +23,20 @@ log_level = {
 logger = logging.getLogger(__name__)
 
 
-def main():
-
+def assign_router():
+    """
+    Assign routers to FastAPI application.
+    """
     api.include_router(url_shortener_app, prefix='/service/url-shortener')
     api.include_router(redirect_router)
+
+
+def main():
+    """
+    Main process.
+
+    Returns:
+        FastAPI: FastAPI application
+    """
+    assign_router()
     return api
