@@ -1,14 +1,18 @@
-"""Url service module.
+"""
+Url service module.
 
 Returns:
     UrlService: Url service
 """
 import hashlib
+import logging
 from dataclasses import asdict
 
 from exception.app_exception import DataAlreadyExist, DataNotFound
 from infra.repository.url_repository import UrlRepository
 from setting import settings
+
+logger = logging.getLogger(__name__)
 
 
 class UrlService:
@@ -36,14 +40,14 @@ class UrlService:
         existing_url = self.__url_repository.get_url_record(short_code)
 
         if existing_url:
-            # TODO log output
             error_key_params = asdict(existing_url)
+            logger.error('Fail to create short url.: existing_url=%s', str(error_key_params))
             raise DataAlreadyExist(error_key_params)
 
         short_url = f"{settings.protocol}://{settings.domain_value}/{settings.service_name}/{short_code}"
-
         self.__url_repository.create_url_record(original_url, short_url, short_code)
-        # TODO output log
+        logger.info('Short url is successfully created.: short_url=%s', short_url)
+
         return short_url
 
     def retrieve_original_url(self, short_code: str) -> str:
@@ -58,7 +62,7 @@ class UrlService:
         url = self.__url_repository.get_url_record(short_code)
 
         if not url:
-            # log output
+            logger.error('Fail to retrieve short url.: short_code=%s', short_code)
             raise DataNotFound({'short_code': short_code})
 
         return url.original_url
