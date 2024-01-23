@@ -4,20 +4,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from infra.table.url_table import table_registry
+from setting import settings
+
+DB_NAME = 'url_service'
 
 
 class DatabaseContext:
     def initialize_db(self):
-        db_type = 'sqlite'
-        db_dir = 'db'
-        db_interface = 'sqlite'
-        db_name = 'url_service'
-        db_url = f'{db_interface}:///../{db_dir}/{db_name}.db?check_same_thread=False'
+        db_url = f'{settings.db_interface}:///../{settings.db_dir}/{DB_NAME}.db?check_same_thread=False'
 
-        # TODO get the current directory from file path
-
-        if db_type == "sqlite" and not os.path.exists(f'../{db_dir}'):
-            os.mkdir(f'../{db_dir}')
+        if settings.db_type == "sqlite" and not os.path.exists(f'../{settings.db_dir}'):
+            os.mkdir(f'../{settings.db_dir}')
 
         engine = create_engine(db_url)
 

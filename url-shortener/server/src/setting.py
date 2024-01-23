@@ -23,6 +23,9 @@ class Settings(BaseSettings):
     service_name: str = ""
     domain_value: str = ""
     protocol: str = ""
+    db_type: str = ""
+    db_interface: str = ""
+    db_dir: str = ""
 
     class Config:
         """
