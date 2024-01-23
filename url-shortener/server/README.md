@@ -23,10 +23,10 @@ method : POST
 url : http://127.0.0.1:8080//service/url-shortener
 body : GraphQL
 mutation ShortenUrl {
-	shortenUrl( longUrl: "https://graphql.org/learn/queries/")
+	shortenUrl( originalUrl: "https://url-shortener/services/123456789/asdfghjkl")
 	{
 		shortUrl,
-        longUrl
+        originalUrl
 	}
 }
 
@@ -35,7 +35,7 @@ Sample response
     "data": {
         "shortenUrl": {
             "shortUrl": "true",
-            "longUrl": "https://graphql.org/learn/queries/"
+            "originalUrl": "https://url-shortener/services/123456789/asdfghjkl"
         }
     }
 }

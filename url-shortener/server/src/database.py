@@ -3,7 +3,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from infra.table.url_table import mapper_registry
+from infra.table.url_table import table_registry
 
 
 class DatabaseContext:
@@ -11,7 +11,7 @@ class DatabaseContext:
         db_type = 'sqlite'
         db_dir = 'db'
         db_interface = 'sqlite'
-        db_name = "url_service"
+        db_name = 'url_service'
         db_url = f'{db_interface}:///../{db_dir}/{db_name}.db?check_same_thread=False'
 
         # TODO get the current directory from file path
@@ -23,7 +23,7 @@ class DatabaseContext:
 
         self.SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-        Base = mapper_registry.generate_base()
+        Base = table_registry.generate_base()
         Base.metadata.create_all(bind=engine)
 
 
