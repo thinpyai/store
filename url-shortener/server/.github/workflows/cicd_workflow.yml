@@ -1,6 +1,9 @@
 name: url-shortener-server-workflow-actions
 run-name: ${{ github.actor }} deploying sample pj service.
-on: [push]
+on:
+  push:
+    branches:
+      - main
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
