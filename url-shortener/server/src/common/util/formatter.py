@@ -12,6 +12,15 @@ class FormatterJSON(logging.Formatter):
     """
 
     def format(self, record):
+        """
+        Format log output string.
+
+        Args:
+            record (LogRecord): Log record.
+
+        Returns:
+            str: Formatted json log.
+        """
         if self.usesTime():
             record.asctime = self.formatTime(record, self.datefmt)
         data = {
