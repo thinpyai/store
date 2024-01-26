@@ -17,14 +17,29 @@ class UrlContext(BaseContext):
     """UrlContext BaseContext
 
     Args:
-        BaseContext (_type_): _description_
+        BaseContext (BaseContext): FastAPI router base Context
     """
 
     def __init__(self, url_service: UrlService):
+        """
+        Initialize URL service to UrlContext
+
+        Args:
+            url_service (UrlService): URL service
+        """
         self.url_service: UrlService = url_service
 
 
-def get_url_repository(db=Depends(get_db)):
+def get_url_repository(db=Depends(get_db)) -> UrlRepository:
+    """
+    Get URL repository
+
+    Args:
+        db (SessionLocal, optional): Database session. Defaults to Depends(get_db).
+
+    Returns:
+        UrlRepository: URL Tepository
+    """
     return UrlRepository(db)
 
 
