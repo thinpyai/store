@@ -1,3 +1,10 @@
+"""
+Log output formatter module.
+
+Returns:
+    FormatterJSON: Format Json data class
+"""
+
 import json
 import logging
 import traceback
