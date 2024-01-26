@@ -28,4 +28,4 @@ jobs:
 
       - name: Run Pytest
         run: poetry run pytest
-        working-directory: ./url-shortener/server
+        working-directory: ./url-shortener/server/src
