@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from typing import Generator
 from uuid import uuid4
 
@@ -33,8 +34,9 @@ class TestingSession(Session):
 
 @pytest.fixture(scope='function', autouse=True)
 def test_db() -> Generator:
-    if not os.path.exists(f'../{settings.db_dir}'):
-        os.mkdir(f'../{settings.db_dir}')
+    root_path = Path(__file__).parent.parent
+    if not os.path.exists(f'{root_path}/{settings.db_dir}'):
+        os.mkdir(f'{root_path}/{settings.db_dir}')
 
     engine = create_engine(DB_URL, connect_args={'check_same_thread': False})
     Base = table_registry.generate_base()

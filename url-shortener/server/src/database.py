@@ -5,6 +5,7 @@ Yields:
     DatabaseContext: Database connection context
 """
 import os
+from pathlib import Path
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -24,10 +25,12 @@ class DatabaseContext:
         """
         Initialize database engine.
         """
-        db_url = f'{settings.db_interface}:///../{settings.db_dir}/{DB_NAME}.db?check_same_thread=False'
+        root_path = Path(__file__).parent.parent
 
-        if settings.db_type == "sqlite" and not os.path.exists(f'../{settings.db_dir}'):
-            os.mkdir(f'../{settings.db_dir}')
+        db_url = f'{settings.db_interface}:///{root_path}//{settings.db_dir}/{DB_NAME}.db?check_same_thread=False'
+
+        if settings.db_type == "sqlite" and not os.path.exists(f'{root_path}/{settings.db_dir}'):
+            os.mkdir(f'{root_path}/{settings.db_dir}')
 
         engine = create_engine(db_url)
 
