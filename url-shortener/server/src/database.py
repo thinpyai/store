@@ -1,3 +1,9 @@
+"""
+Database connection setting module.
+
+Yields:
+    DatabaseContext: Database connection context
+"""
 import os
 
 from sqlalchemy import create_engine
@@ -10,7 +16,14 @@ DB_NAME = 'url_service'
 
 
 class DatabaseContext:
+    """
+    Database context class
+    """
+
     def initialize_db(self):
+        """
+        Initialize database engine.
+        """
         db_url = f'{settings.db_interface}:///../{settings.db_dir}/{DB_NAME}.db?check_same_thread=False'
 
         if settings.db_type == "sqlite" and not os.path.exists(f'../{settings.db_dir}'):
