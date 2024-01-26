@@ -1,5 +1,5 @@
 name: url-shortener-server-workflow-actions
-run-name: ${{ github.actor }} deploying URL shortener service.
+run-name: ${{ github.actor }} deploying sample pj service.
 on: [push]
 jobs:
   check-bats-version:
