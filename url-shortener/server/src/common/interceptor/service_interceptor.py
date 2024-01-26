@@ -1,3 +1,9 @@
+"""
+Interceptor module.
+
+Returns:
+    wrapper: Wrapper for database transaction decorator
+"""
 import logging
 from functools import wraps
 
