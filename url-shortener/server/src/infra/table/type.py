@@ -15,16 +15,19 @@ class GUID(TypeDecorator):
     cache_ok = True
 
     def load_dialect_impl(self, dialect):
-        if dialect.name == 'postgresql':
-            return dialect.type_descriptor(UUID(as_uuid=True))
-        else:
-            return dialect.type_descriptor(CHAR(32))
+        """Load dialect impl
+
+        Args:
+            dialect (Dialect): Dialect
+
+        Returns:
+            TypeEngine: Char typeEngine
+        """
+        return dialect.type_descriptor(CHAR(32))
 
     def process_bind_param(self, value, dialect):
         if value is None:
             return value
-        elif dialect.name == 'postgresql':
-            return str(value)
         else:
             if not isinstance(value, uuid.UUID):
                 return "%.32x" % uuid.UUID(value).int
