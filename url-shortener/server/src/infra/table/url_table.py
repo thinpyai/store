@@ -1,3 +1,7 @@
+"""
+Table and data class mapper registry module
+"""
+
 import uuid
 from datetime import timezone
 
