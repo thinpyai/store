@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - url-shortener/server/src
+      - url-shortener/server/src/**
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
