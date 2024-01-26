@@ -1,3 +1,4 @@
+import os
 from typing import Generator
 from uuid import uuid4
 
@@ -12,8 +13,9 @@ from api.api import api
 from app import assign_router
 from database import get_db
 from infra.table.url_table import table_registry
+from setting import settings
 
-DB_URL = 'sqlite:///./db/test_url_service.db?check_same_thread=False'
+DB_URL = f'sqlite:///./{settings.db_dir}/test_url_service.db?check_same_thread=False'
 
 
 @pytest.fixture(scope='module')
@@ -31,6 +33,9 @@ class TestingSession(Session):
 
 @pytest.fixture(scope='function', autouse=True)
 def test_db() -> Generator:
+    if not os.path.exists(f'../{settings.db_dir}'):
+        os.mkdir(f'../{settings.db_dir}')
+
     engine = create_engine(DB_URL, connect_args={'check_same_thread': False})
     Base = table_registry.generate_base()
     Base.metadata.create_all(bind=engine)
