@@ -1,3 +1,7 @@
+"""
+URL dataclass module
+"""
+
 from dataclasses import dataclass
 
 
