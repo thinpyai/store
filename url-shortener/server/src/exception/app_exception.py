@@ -25,7 +25,17 @@ class SystemException(Exception):
         self.status_code = status_code
         self.message = message
 
-    def _generate_message(self, base: str, param: dict):
+    def _generate_message(self, base: str, param: dict) -> str:
+        """
+        Generate error message.
+
+        Args:
+            base (str): Base error message.
+            param (dict): Error occurring parameters
+
+        Returns:
+            str: Error message
+        """
         if not param:
             message = base
         else:
