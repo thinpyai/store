@@ -1,7 +1,11 @@
-import json
+"""
+Additional types module
+
+Returns:
+    GUID : New GUID type
+"""
 import uuid
 
-from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.types import CHAR, VARCHAR, TypeDecorator
 
 
@@ -42,23 +46,3 @@ class GUID(TypeDecorator):
             if not isinstance(value, uuid.UUID):
                 value = uuid.UUID(value)
             return value
-
-
-class JsonArray(TypeDecorator):
-    impl = VARCHAR
-    cache_ok = True
-
-    @property
-    def python_type(self):
-        return list
-
-    def process_bind_param(self, value, dialect):
-        if value is not None:
-            value = json.dumps(value)
-
-        return value
-
-    def process_result_value(self, value, dialect):
-        if value is not None:
-            value = json.loads(value)
-        return value
