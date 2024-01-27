@@ -18,6 +18,12 @@ def transactional(func):
 
     @wraps(func)
     def wrapper(self, *args, **kwargs):
+        """
+        Wrapper for database commit connection.
+
+        Returns:
+            func: Commit function
+        """
         result = func(self, *args, **kwargs)
 
         if hasattr(self, 'db'):
