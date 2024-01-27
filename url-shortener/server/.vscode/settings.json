@@ -28,7 +28,8 @@
   ],
   "pylint.args": [
     "--max-line-length=120",
-    "--disable=W0231"
+    "--disable=W0231",
+    "--rcfile=${workspaceFolder}/.pylintrc"
   ],
   "python.testing.pytestEnabled": true,
   "python.testing.pytestArgs": [
