@@ -19,7 +19,8 @@ class GUID(TypeDecorator):
     cache_ok = True
 
     def load_dialect_impl(self, dialect):
-        """Load dialect impl
+        """
+        Load dialect impl
 
         Args:
             dialect (Dialect): Dialect
@@ -30,6 +31,16 @@ class GUID(TypeDecorator):
         return dialect.type_descriptor(CHAR(32))
 
     def process_bind_param(self, value, dialect):
+        """
+        Process bind parameters
+
+        Args:
+            value (parameter): Parameter vale
+            dialect (parameter): Parameter dialect, optional
+
+        Returns:
+            _type_: _description_
+        """
         if value is None:
             return value
         else:
