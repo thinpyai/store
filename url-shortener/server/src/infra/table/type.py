@@ -2,11 +2,11 @@
 Additional types module
 
 Returns:
-    GUID : New GUID type
+    GUID : GUID type
 """
 import uuid
 
-from sqlalchemy.types import CHAR, VARCHAR, TypeDecorator
+from sqlalchemy.types import CHAR, TypeDecorator
 
 
 class GUID(TypeDecorator):
