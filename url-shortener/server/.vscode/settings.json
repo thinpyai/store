@@ -27,7 +27,8 @@
     "--config=.flake8"
   ],
   "pylint.args": [
-    "--max-line-length=120"
+    "--max-line-length=120",
+    "--disable=W0231"
   ],
   "python.testing.pytestEnabled": true,
   "python.testing.pytestArgs": [
