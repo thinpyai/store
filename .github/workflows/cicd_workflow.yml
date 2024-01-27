@@ -31,7 +31,9 @@ jobs:
         working-directory: ./url-shortener/server
 
       - name: Check code style
-        run: poetry run flake8 ./url-shortener/server/src --config ./url-shortener/server/conf/.flake8
+        run: poetry run flake8 ./src --config ./conf/.flake8
+        working-directory: ./url-shortener/server
 
       - name: Check code coverage
         run: poetry run coverage run -m pytest && coverage report
+        working-directory: ./url-shortener/server
