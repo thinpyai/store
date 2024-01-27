@@ -35,5 +35,5 @@ jobs:
         working-directory: ./url-shortener/server
 
       - name: Check code coverage
-        run: poetry run coverage report
+        run: poetry run coverage run -m pytest && poetry run coverage report
         working-directory: ./url-shortener/server
