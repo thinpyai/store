@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: shorten-url-app
+    restart: always
+    env_file:
+      - dev.env
+    ports:
+      - "8080:8080"
+    volumes:
+      - /mnt/c/Users/${USER}/.aws/:/home/shorten-url/.aws:ro
+      - ./server/db:/shorten-url/db
+      - ./server/log:/shorten-url/log
+      - ./server/conf:/shorten-url/conf
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
