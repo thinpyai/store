@@ -21,7 +21,7 @@ class DatabaseContext:
     Database context class
     """
 
-    def initialize_db(self):
+    def __init__(self):
         """
         Initialize database engine.
         """
@@ -34,14 +34,13 @@ class DatabaseContext:
 
         engine = create_engine(db_url)
 
-        self.SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+        self.session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
         Base = table_registry.generate_base()
         Base.metadata.create_all(bind=engine)
 
 
 database_context = DatabaseContext()
-database_context.initialize_db()
 
 
 def get_db():
@@ -51,7 +50,7 @@ def get_db():
     Yields:
         SessionLocal: Local session for database connection
     """
-    db = database_context.SessionLocal()
+    db = database_context.session_local()
     try:
         yield db
     finally:
