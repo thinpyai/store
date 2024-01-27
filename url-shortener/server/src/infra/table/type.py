@@ -39,7 +39,7 @@ class GUID(TypeDecorator):
             dialect (parameter): Parameter dialect, optional
 
         Returns:
-            _type_: _description_
+            str: UUID string
         """
         if value is None:
             return value
