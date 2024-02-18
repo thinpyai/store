@@ -2,15 +2,14 @@ package com.tp.spendsmart.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HomeController {
+public class LoginController {
 
-    @GetMapping({"/","/home"})
-    public ModelAndView homeInitialize() {
-        ModelAndView modelAndView = new ModelAndView("home");
+    @GetMapping("/login")
+    ModelAndView loginInitializer() {
+        ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }
 }
