@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tp.spendsmart.infra.mapper.UserMapper">
+
+    <resultMap id="userResultMap" type="com.tp.spendsmart.infra.data.UserData">
+        <id property="id" column="ID"/>
+        <result property="username" column="USERNAME"/>
+        <result property="password" column="PASSWORD"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="userResultMap">
+        SELECT
+        ID,
+        USERNAME,
+        PASSWORD
+        FROM USER
+    </select>
+
+    <select id="findByUsername" parameterType="String" resultMap="userResultMap">
+        SELECT
+        ID,
+        USERNAME,
+        PASSWORD
+        FROM USER
+        WHERE USERNAME = #{username}
+    </select>
+
+</mapper>
