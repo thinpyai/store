@@ -19,10 +19,11 @@ public class DataConverter<E, T> {
             return dst;
         } catch (IllegalAccessException | InvocationTargetException ex) {
 //            throw new DataConvertException(messageId("error.dataconvert"), ex, src);
-            
+            return null;
 
         } catch (ReflectiveOperationException ex) {
 //            throw new IllegalArgumentException(messageId("error.dataconvert"), ex);
+            return null;
         }
     }
 
