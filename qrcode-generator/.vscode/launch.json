@@ -5,22 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: url-shortener",
+            "name": "qrcode-gen",
             "type": "python",
             "request": "launch",
-            "module": "uvicorn",
-            "cwd": "${workspaceFolder}/src",
+            // "module": "manage",
+            "program": "${workspaceFolder}/manage.py",
             "args": [
-                "--factory",
-                "app:main",
-                "--host",
-                "127.0.0.1",
-                "--port",
-                " 8080",
-                "--log-config",
-                "${workspaceFolder}/conf/logging.yml",
-                "--reload"
-            ]
+                "runserver",
+                "--noreload",
+                "--nothreading"
+            ],
+            "django": true,
+            "console": "integratedTerminal",
+            "env": {
+                "DJANGO_SETTINGS_MODULE": "src.settings"
+            }
         },
         {
             "name": "Python: Current File",
