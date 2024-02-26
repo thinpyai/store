@@ -30,17 +30,12 @@ public class SecurityConfig {
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home", true)
-                        .permitAll()
+                        .defaultSuccessUrl("/home")
+
                 )
                 .logout((logout) -> logout.logoutSuccessUrl("/login").permitAll());
 
         return http.build();
-    }
-
-    @Bean
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean

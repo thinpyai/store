@@ -15,7 +15,7 @@ public class DataConverter<E, T> {
         }
         try {
             D dst = type.getDeclaredConstructor().newInstance();
-            BeanUtils.copyProperties(dst, src);
+            BeanUtils.copyProperties(src, dst);
             return dst;
         } catch (IllegalAccessException | InvocationTargetException ex) {
 //            throw new DataConvertException(messageId("error.dataconvert"), ex, src);
