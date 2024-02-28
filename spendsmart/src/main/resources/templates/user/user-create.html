@@ -6,7 +6,11 @@
 </head>
 <body>
 
-<h1 th:text="${message}">Hello, World!</h1>
+<h1 th:text="${message}">Create User</h1>
+
+<ul >
+    <li th:if="${errorMessage != null}" th:text="${errorMessage}"></li>
+</ul>
 
 <form method="post" th:action="@{/user/create-confirm}">
     <label for="message">Message:</label>

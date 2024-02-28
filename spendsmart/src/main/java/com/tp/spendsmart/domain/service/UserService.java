@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SpendSmartUserDetailsService implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -26,4 +26,10 @@ public class SpendSmartUserDetailsService implements UserDetailsService {
             .password(user.getPassword())
             .build();
     }
+
+    public User getUserByUsername(String username){
+        User user = userRepository.findByUsername(username);
+        return user;
+    }
+
 }
