@@ -24,15 +24,15 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(
                         (requests) -> requests
-                                .requestMatchers("/user/**").permitAll()
+                                .requestMatchers("${api.base_path}/user/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/home")
+                        .loginPage("${api.base_path}/login")
+                        .defaultSuccessUrl("${api.base_path}/home")
 
                 )
-                .logout((logout) -> logout.logoutSuccessUrl("/login").permitAll());
+                .logout((logout) -> logout.logoutSuccessUrl("${api.base_path}/login").permitAll());
 
         return http.build();
     }

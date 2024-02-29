@@ -38,7 +38,9 @@ Start mysql docker container
 
 
 ### Temp login user
-Access http://localhost:8080/login
+Access http://localhost:8080/api/{version}/login
+
+Check version number at api.version in application.properties.
 
 username : temp_user
 password : my_temp_user

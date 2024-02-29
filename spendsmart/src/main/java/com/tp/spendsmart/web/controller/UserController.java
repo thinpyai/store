@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Locale;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("${api.base_path}/user")
 public class UserController {
 
     private final UserService userService;
