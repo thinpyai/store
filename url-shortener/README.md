@@ -2,5 +2,6 @@
 URL shortener
 
 # Technologies
-Backend - fastapi
-
+Backend - Python, FastAPI, SQLite, GraphQL
+Frontend - Angular (Not started)
+Containerization - Docker, Docker Compose
