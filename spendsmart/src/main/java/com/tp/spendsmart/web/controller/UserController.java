@@ -25,6 +25,10 @@ public class UserController {
     @Autowired
     private MessageSource messageSource;
 
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
+
 
     @GetMapping("/create")
     public ModelAndView createInitializer(@RequestParam(defaultValue = "en") String lang) {
