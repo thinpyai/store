@@ -11,7 +11,7 @@
     Invalid username and password.</div>
 <div th:if="${param.logout}">
     You have been logged out.</div>
-<form th:action="@{/api/v1/login}" method="post" th:csrf>
+<form th:action="@{${apiBasePath}+'/login'}" method="post" th:csrf>
     <div>
         <input type="text" name="username" placeholder="Username"/>
     </div>
@@ -21,7 +21,7 @@
     <input type="submit" value="Log in" />
 </form>
 
-<form th:action="@{/user/create}" method="get">
+<form th:action="@{${apiBasePath}+'/user/create'}" method="get">
     <input type="submit" value="Register" />
 </form>
 </body>

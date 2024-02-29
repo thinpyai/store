@@ -8,7 +8,7 @@
 
 <h1 th:text="${message}">Create Confirm User</h1>
 
-<form method="post" th:action="@{/user/create-complete}">
+<form method="post" th:action="@{${apiBasePath}+'/user/create-complete'}">
     <label for="message">Message:</label>
     <input type="text" id="message" name="message">
     <button type="submit">Submit</button>
