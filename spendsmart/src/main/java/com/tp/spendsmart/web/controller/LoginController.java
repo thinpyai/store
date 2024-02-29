@@ -1,8 +1,6 @@
 package com.tp.spendsmart.web.controller;
 
 import com.tp.spendsmart.common.config.ApiProperties;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +15,9 @@ public class LoginController {
     ApiProperties apiProperties;
 
     @GetMapping("/login")
-    ModelAndView loginInitializer(HttpSession session) {
+    ModelAndView loginInitializer() {
         ModelAndView modelAndView = new ModelAndView("login");
-        session.setAttribute("apiBasePath", apiProperties.getApiBasePath());
+        modelAndView.addObject("apiBasePath", apiProperties.getApiBasePath());
         return modelAndView;
     }
 }

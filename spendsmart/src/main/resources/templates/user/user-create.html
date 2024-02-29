@@ -12,7 +12,8 @@
     <li th:if="${errorMessage != null}" th:text="${errorMessage}"></li>
 </ul>
 
-<form method="post" th:action="@{${session.apiBasePath}+'/user/create-confirm'}">
+
+<form method="post" th:action="@{${apiBasePath}+'/user/create-confirm'}">
     <label for="message">Message:</label>
     <input type="text" id="message" name="message">
     <button type="submit">Submit</button>
