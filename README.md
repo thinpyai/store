@@ -18,6 +18,17 @@ If you have any questions or need clarification regarding the usage of these mat
 thinpyaiwin@gmail.com
 
 
+## Sample Projects
+1. url-shortener
+    - Overview : Shorten long URLs to short URLs.
+    - Tech stack : Python, FastAPI, SQLAlchemy-Utils, Strawberry GraphQL, Requests, HTTPX, Pydantic Settings, Uvicorn, SQLite, Docker, Docker Compose
+2. qrcode-generator
+    - Overview : Generate QR codes for specific URLs.
+    - Tech stack : Python, Django Rest Framework, qrcode, boto3, Django-filter, PostgreSQL, REST API, Docker, Docker Compose
+3. spendsmart
+    - Overview : Provide functionality for managing personal budgets.
+    - Tech stack : Java, Spring Boot, Spring Security, Lombok, Thymeleaf, MyBatis, MySQL, Docker, Docker Compose
+
 ## Conclusion
 
 By using these materials, you agree to abide by the guidelines outlined in this README file. Failure to adhere to these guidelines may result in legal consequences. These guidelines are subject to change, so it is advisable to review this document periodically for updates.

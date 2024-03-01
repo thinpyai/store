@@ -1,14 +1,22 @@
 ## Run project (local)
+1. Run db container
+Go to the root directory where docker-compose.yml locates.
+```
+docker-compose up -d
+```
 
-1. Run the project
+2. Run the project
 ```
 cd qrcode-generator
 python manage.py runserver
 ```
 
-2. Call from browser
+3. Call from browser
 Login as admin user.
 http://127.0.0.1:8000/users/
+http://127.0.0.1:8000/groups/
+Authenticated
+
 http://localhost:8000/api/generate/?data=YourDataHere
 
 
@@ -23,3 +31,6 @@ https://codingchallenges.fyi/challenges/challenge-qr-generator
 python manage.py makemigrations
 python manage.py migrate
 ```
+
+## Direct access to DB container
+
