@@ -12,6 +12,7 @@ public class HomeController {
     @GetMapping({"/","/home"})
     public ModelAndView homeInitialize() {
         ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject("content", "balance/main");
         return modelAndView;
     }
 }

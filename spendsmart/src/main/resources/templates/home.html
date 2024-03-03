@@ -6,6 +6,9 @@
 </head>
 <body>
 
-<h1>Home</h1>
+<div id="header" th:replace="~{layout/header :: header}"></div>
+<div id="content" th:replace="${content} :: main"></div>
+
+
 </body>
 </html>
