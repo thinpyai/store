@@ -27,7 +27,7 @@ thinpyaiwin@gmail.com
     - Tech stack : Python, Django Rest Framework, qrcode, boto3, Django-filter, PostgreSQL, REST API, Docker, Docker Compose
 3. spendsmart
     - Overview : Provide functionality for managing personal budgets.
-    - Tech stack : Java, Spring Boot, Spring Security, Lombok, Thymeleaf, MyBatis, MySQL, Docker, Docker Compose
+    - Tech stack : Java, Spring Boot, Spring Security, Lombok, Thymeleaf, MyBatis, Redis, MySQL, Docker, Docker Compose
 
 ## Conclusion
 

@@ -29,4 +29,10 @@ public class UserRepository implements BaseRepository<User> {
         return user;
     }
 
+    public User findById(String id){
+        UserData userData = this.userMapper.findById(id);
+        User user = DataConverter.convert(userData, User.class);
+        return user;
+    }
+
 }

@@ -78,4 +78,5 @@ public class UserController {
         modelAndView.addObject("message", "List User");
         return modelAndView;
     }
+
 }

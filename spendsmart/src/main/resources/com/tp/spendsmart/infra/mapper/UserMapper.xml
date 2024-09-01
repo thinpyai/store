@@ -26,4 +26,15 @@
         WHERE USERNAME = #{username}
     </select>
 
+    <select id="findById" parameterType="String" resultMap="userResultMap">
+        SELECT
+        ID,
+        USERNAME,
+        PASSWORD
+        FROM USER
+        WHERE Id = #{id}
+    </select>
+
+
+
 </mapper>

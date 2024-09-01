@@ -14,3 +14,15 @@ services:
     #   - ~/apps/postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  localstack:
+    image: localstack/localstack:2.0.0
+    container_name: localstack
+    ports:
+      - "4566:4566" # LocalStack main port
+      - "4571:4571" # LocalStack S3 port
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=us-east-1
+    # networks:
+    #   - localstack_network

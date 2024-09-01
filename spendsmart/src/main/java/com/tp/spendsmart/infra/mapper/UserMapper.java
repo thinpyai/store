@@ -11,4 +11,6 @@ public interface UserMapper {
     List<UserData> findAll();
 
     UserData findByUsername(String username);
+
+    UserData findById(String id);
 }

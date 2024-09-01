@@ -2,6 +2,7 @@ package com.tp.spendsmart.domain.service;
 
 import com.tp.spendsmart.domain.model.User;
 import com.tp.spendsmart.infra.repository.UserRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,13 @@ public class UserService implements UserDetailsService {
     public User getUserByUsername(String username){
         User user = userRepository.findByUsername(username);
         return user;
+    }
+
+    @Cacheable(value = "userProfile", key = "#id")
+    public User getUserProfile(String id){
+        User user = userRepository.findById(id);
+        return user;
+
     }
 
 }
